@@ -13,12 +13,14 @@
     <style>
         body { font-family: 'Noto Sans JP', sans-serif; -webkit-text-size-adjust: 100%; }
         .font-urbanist { font-family: 'Urbanist', sans-serif; }
+        /* 単語の途中で改行させない設定 */
         .break-keep { word-break: keep-all; overflow-wrap: anywhere; }
+        .inline-block { display: inline-block; }
         .animate-spin-slow { animation: spin 8s linear infinite; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         html { scroll-behavior: smooth; }
-        /* スマホでの不自然な改行を防ぐ設定 */
-        .text-justify { text-align: justify; text-justify: inter-character; }
+        /* 文末の孤立を防ぐ */
+        .prevent-orphan { display: inline-block; white-space: nowrap; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 overflow-x-hidden antialiased">
@@ -96,8 +98,9 @@
                     </div>
                 </div>
                 <div class="order-1 md:order-2 flex justify-center">
-                    <div class="relative w-full max-w-sm aspect-[4/5] bg-slate-200 rounded-[3rem] overflow-hidden border-4 border-white shadow-2xl">
-                        <img src="./プロフィール写真.png" alt="星野健太" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=800'">
+                    <div class="relative w-full max-w-sm aspect-[4/5] bg-slate-200 rounded-[3rem] overflow-hidden border-4 border-white shadow-2xl flex items-center justify-center">
+                        <!-- 写真が表示されない場合のための絶対パス（または相対パス）の調整 -->
+                        <img src="プロフィール写真.png" alt="星野健太" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=800'">
                     </div>
                 </div>
             </div>
@@ -157,7 +160,7 @@
                     <p class="text-base md:text-xl leading-relaxed text-sky-100 mb-10 break-keep text-left">
                         どれだけ手技を増やしても、「なぜそこが痛いのか」を明確に提示できなければ、価値はゼロです。重心から原因を1ミリの狂いなく特定するプロセスを公開します。
                     </p>
-                    <div class="space-y-4 max-w-sm mx-auto md:mx-0">
+                    <div class="space-y-4 max-w-sm mx-auto md:mx-0 text-left">
                         <div class="flex items-center p-4 bg-sky-800/50 rounded-2xl border border-sky-700">
                             <i data-lucide="search" class="text-orange-400 mr-4 shrink-0"></i>
                             <span class="text-base md:text-lg font-bold text-left break-keep leading-tight">重心評価で身体のズレを視覚化</span>
@@ -177,13 +180,13 @@
                         <i data-lucide="target" class="text-orange-500 mb-8 w-20 h-20"></i>
                         <h4 class="text-xl md:text-2xl font-black mb-6 text-white leading-tight underline decoration-orange-500 decoration-4 underline-offset-8 break-keep text-center">重心を整える＝<br />根本から変わる</h4>
                         <p class="text-sky-200 text-sm md:text-lg leading-relaxed break-keep text-center">
-                            揉むだけの「癒やし」ではなく、身体を「仕組み」から再構築する仕事。だからこそ、圧倒的な信頼が構築できるのです。
+                            揉むだけの「癒やし」ではなく、身体を「仕組み」から再構築する仕事。だからこそ、圧倒的な<span class="prevent-orphan">信頼が構築できるのです。</span>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </header>
 
     <!-- 6. キャリア戦略（スモールスタート） -->
     <section class="py-24 px-6 bg-white text-center border-b border-slate-100">
@@ -204,7 +207,7 @@
                 <div class="p-10 bg-orange-100 rounded-[2.5rem] border border-orange-200 relative scale-105 shadow-xl z-10 text-left">
                     <div class="bg-orange-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-black mb-6 shadow-md text-left">02</div>
                     <h3 class="text-xl font-bold text-sky-900 mb-4 font-black break-keep text-orange-600 text-left">本質的な価値を試す</h3>
-                    <p class="text-slate-800 font-bold leading-relaxed text-base md:text-lg break-keep leading-relaxed text-left text-justify">
+                    <p class="text-slate-800 font-bold leading-relaxed text-base md:text-lg break-keep leading-relaxed sm:whitespace-pre-wrap text-left text-justify">
                         身近な友人や知人に「自費の価値」を体験してもらう。<br />
                         <span class="text-orange-600 block mt-2 underline decoration-orange-300 decoration-4 italic">
                             「自分ができる範囲」で、<br />
@@ -257,7 +260,7 @@
             <div class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl text-slate-800 border-4 border-orange-400">
                 <div class="mb-8 p-6 bg-orange-50 rounded-3xl border border-orange-200 text-center">
                     <p class="text-orange-600 font-black text-xs md:text-sm mb-2 tracking-widest uppercase text-center font-urbanist">Special Invitation</p>
-                    <p class="text-slate-900 font-black text-2xl md:text-4xl italic break-keep leading-none text-center">4月24日(金) 23:59 締切</p>
+                    <p class="text-slate-900 font-black text-2xl md:text-4xl italic break-keep leading-none text-center font-urbanist">4月24日(金) 23:59 締切</p>
                 </div>
 
                 <a href="https://my82p.com/p/r/w2nttHCF" target="_blank" class="block w-full bg-orange-500 hover:bg-orange-400 text-white font-black py-6 rounded-3xl text-lg md:text-2xl shadow-xl transition transform hover:scale-[1.03] active:scale-95 text-center animate-pulse text-center">
@@ -307,7 +310,7 @@
         // カリキュラムリストの生成
         const curriculum = [
             "戻りのない身体を作る『重心』と物理法則の完全理解",
-            "『検査 ＞ 治療』を具現化する、1ミリの狂いもない評価術",
+            "<span class='inline-block'>『検査 ＞ 治療』</span>を具現化する、1ミリの狂いもない評価術",
             "PT1年目で手取り15万だった僕が激変した『決断』の裏側",
             "病院勤務を続けながら、リスクなく価値を試す一歩の踏み出し方",
             "「一人の独立」と「成功者の仕組み」の決定的な違い",
@@ -318,7 +321,7 @@
         curriculum.forEach(text => {
             const div = document.createElement('div');
             div.className = "flex items-start text-base md:text-lg font-bold text-slate-700 leading-snug text-left";
-            div.innerHTML = `<i data-lucide="check-circle-2" class="text-sky-500 mr-3 shrink-0 mt-1 w-5 h-5 text-left"></i><span class="text-left break-keep">${text}</span>`;
+            div.innerHTML = `<i data-lucide="check-circle-2" class="text-sky-500 mr-3 shrink-0 mt-1 w-5 h-5 text-left"></i><span class="text-left break-keep text-justify">${text}</span>`;
             listContainer.appendChild(div);
         });
         lucide.createIcons();
