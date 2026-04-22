@@ -13,20 +13,26 @@
     <style>
         body { font-family: 'Noto Sans JP', sans-serif; -webkit-text-size-adjust: 100%; }
         .font-urbanist { font-family: 'Urbanist', sans-serif; }
-        /* 単語の途中で改行させない設定 */
+        
+        /* 改行コントロール：単語の途中で切らない */
         .break-keep { word-break: keep-all; overflow-wrap: anywhere; }
-        .inline-block { display: inline-block; }
+        
+        /* 文末の「。」が一人ぼっちにならないための設定 */
+        .prevent-orphan { display: inline-block; }
+
         .animate-spin-slow { animation: spin 8s linear infinite; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         html { scroll-behavior: smooth; }
-        /* 文末の孤立を防ぐ */
-        .prevent-orphan { display: inline-block; white-space: nowrap; }
+
+        /* セクションごとの余白調整 */
+        .section-padding { padding-left: 1.5rem; padding-right: 1.5rem; }
+        @media (min-width: 768px) { .section-padding { padding-left: 2rem; padding-right: 2rem; } }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 overflow-x-hidden antialiased">
 
     <!-- 1. 緊急告知バナー -->
-    <div class="bg-orange-500 text-white py-3 px-2 text-center font-bold text-xs md:text-base sticky top-0 z-50 shadow-md">
+    <div class="bg-orange-500 text-white py-3 px-4 text-center font-bold text-xs md:text-base sticky top-0 z-50 shadow-md">
         <div class="flex items-center justify-center gap-2">
             <i data-lucide="timer" class="w-4 h-4 shrink-0"></i>
             <span class="whitespace-nowrap italic tracking-tight">最終申込締切：4/24(金) 23:59 締切</span>
@@ -39,6 +45,8 @@
     <!-- 2. ヒーローセクション -->
     <header class="relative bg-sky-600 text-white py-16 px-6 md:py-32 overflow-hidden text-center md:text-left">
         <div class="absolute top-0 right-0 w-96 h-96 bg-sky-400 rounded-full blur-[120px] opacity-40"></div>
+        <div class="absolute bottom-0 left-0 w-72 h-72 bg-orange-400 rounded-full blur-[100px] opacity-20"></div>
+
         <div class="max-w-6xl mx-auto relative z-10">
             <div class="inline-block px-4 py-1 mb-6 bg-sky-500/50 backdrop-blur-sm border border-sky-300/30 rounded-full text-white font-bold text-[10px] md:text-sm tracking-widest uppercase">
                 Special Online Seminar
@@ -50,7 +58,7 @@
             </h1>
             <p class="text-base md:text-3xl text-sky-50 font-medium mb-12 leading-relaxed max-w-4xl break-keep">
                 「治せる」という確信が、僕の人生を変えた。<br />
-                一生モノの<span class="text-orange-300 font-bold decoration-orange-300 decoration-2 underline underline-offset-4 text-left">「本当の治療の軸」</span>を手に入れ、<br />
+                一生モノの<span class="text-orange-300 font-bold underline decoration-orange-300 decoration-2 underline-offset-4 text-left prevent-orphan">「本当の治療の軸」</span>を手に入れ、<br />
                 一歩ずつ理想のキャリアを掴むための、全記録。
             </p>
 
@@ -67,18 +75,18 @@
     </header>
 
     <!-- 3. 自己紹介セクション -->
-    <section class="py-20 px-6 bg-white overflow-hidden border-b border-slate-100">
+    <section class="py-20 section-padding bg-white overflow-hidden border-b border-slate-100">
         <div class="max-w-6xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div class="order-2 md:order-1 space-y-6">
+                <div class="order-2 md:order-1 space-y-6 text-left">
                     <div class="text-sky-600 font-bold tracking-widest text-xs uppercase mb-2 font-urbanist">Speaker Profile</div>
                     <h2 class="text-4xl md:text-6xl font-black text-sky-900 mb-6 break-keep text-left">星野 健太</h2>
-                    <div class="flex flex-wrap gap-2 mb-8">
+                    <div class="flex flex-wrap gap-2 mb-8 justify-start">
                         <span class="bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-[10px] md:text-xs font-bold">整体院 晴々 長岡院 院長</span>
                         <span class="bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-[10px] md:text-xs font-bold">理学療法士</span>
-                        <span class="bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-[10px] md:text-xs font-bold font-urbanist text-left">PT / Coach</span>
+                        <span class="bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-[10px] md:text-xs font-bold font-urbanist">PT / Coach</span>
                     </div>
-                    <div class="p-6 bg-sky-50 rounded-2xl border-l-8 border-orange-400 shadow-sm mb-8 text-left">
+                    <div class="p-6 bg-sky-50 rounded-2xl border-l-8 border-orange-400 shadow-sm mb-8">
                         <p class="text-sky-900 font-bold text-lg md:text-xl italic break-keep leading-snug">
                             「自分には何もない」と悩んだ病院勤務時代。<br />
                             手取り15万円の給与明細を見て感じた不安が、僕の原点です。
@@ -89,7 +97,7 @@
                             病院勤務時代は手取り15万円。将来への不安で眠れない夜もありました。「このままでいいのか？」と自問自答を繰り返す毎日。そんな僕が、小田嶋先生という師匠に出会い、成功の仕組みを徹底的にインストールしました。
                         </p>
                         <p>
-                            <span class="text-sky-900 font-bold underline decoration-orange-400 decoration-4 underline-offset-4">23歳で独立。初月から現在まで100%黒字を継続。</span><br />
+                            <span class="text-sky-900 font-bold underline decoration-orange-400 decoration-4 underline-offset-4 prevent-orphan text-left">23歳で独立。初月から現在まで100%黒字を継続。</span><br />
                             「独りでの戦い」から「最高の環境」を選んだ決断が、年商2000万という結果に繋がりました。
                         </p>
                         <p>
@@ -99,8 +107,8 @@
                 </div>
                 <div class="order-1 md:order-2 flex justify-center">
                     <div class="relative w-full max-w-sm aspect-[4/5] bg-slate-200 rounded-[3rem] overflow-hidden border-4 border-white shadow-2xl flex items-center justify-center">
-                        <!-- 写真が表示されない場合のための絶対パス（または相対パス）の調整 -->
-                        <img src="プロフィール写真.png" alt="星野健太" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=800'">
+                        <!-- profile.png を参照 -->
+                        <img src="profile.png" alt="星野健太" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=800'">
                     </div>
                 </div>
             </div>
@@ -108,7 +116,7 @@
     </section>
 
     <!-- 4. 重心整体ロジック -->
-    <section class="py-20 px-6 bg-sky-50">
+    <section class="py-20 section-padding bg-sky-50">
         <div class="max-w-5xl mx-auto">
             <div class="text-center mb-16 space-y-4">
                 <h2 class="text-2xl md:text-5xl font-black text-sky-900 italic break-keep leading-tight text-center">「その痛み、なぜ戻るのか？」</h2>
@@ -140,7 +148,7 @@
                     <p class="text-sky-50 text-sm md:text-base leading-relaxed break-keep mb-6 font-medium">
                         地球の全員にかかる「重力」に重心を整える。どんな症状にも迷わずに対応できる「一生モノの治療の軸」が手に入ります。
                     </p>
-                    <div class="bg-white/20 p-3 rounded-xl text-white font-bold text-xs md:text-sm text-center">
+                    <div class="bg-white/20 p-4 rounded-xl text-white font-bold text-xs md:text-sm text-center">
                         1回1万円でも「安い」と言われる価値の正体。
                     </div>
                 </div>
@@ -149,11 +157,11 @@
     </section>
 
     <!-- 5. 検査学ロジック -->
-    <section class="py-20 px-6 bg-sky-900 text-white relative">
+    <section class="py-20 section-padding bg-sky-900 text-white relative">
         <div class="max-w-5xl mx-auto relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div class="text-center md:text-left">
-                    <div class="inline-block px-4 py-1 mb-6 bg-orange-500 text-white font-bold rounded-lg shadow-lg text-xs md:text-sm text-left">臨床の絶対真理</div>
+                    <div class="inline-block px-4 py-1 mb-6 bg-orange-500 text-white font-bold rounded-lg shadow-lg text-xs md:text-sm text-left uppercase tracking-widest">Mastery</div>
                     <h2 class="text-3xl md:text-6xl font-black mb-8 leading-tight break-keep text-center md:text-left">
                         検査の引き出し ＞ <br />治療の引き出し
                     </h2>
@@ -186,14 +194,16 @@
                 </div>
             </div>
         </div>
-    </header>
+    </section>
 
     <!-- 6. キャリア戦略（スモールスタート） -->
-    <section class="py-24 px-6 bg-white text-center border-b border-slate-100">
+    <section class="py-24 section-padding bg-white text-center border-b border-slate-100">
         <div class="max-w-5xl mx-auto">
             <div class="mb-16 space-y-4">
-                <h2 class="text-2xl md:text-5xl font-black text-sky-900 tracking-tighter break-keep italic text-center leading-tight underline decoration-orange-400 decoration-8 underline-offset-8">できるところから、一歩ずつ。</h2>
-                <p class="text-sm md:text-xl text-slate-500 font-bold break-keep leading-relaxed text-center">リスクを背負って独立する前に、足元からキャリアを変える。</p>
+                <h2 class="text-3xl md:text-5xl font-black text-sky-900 tracking-tighter break-keep italic text-center leading-tight">
+                    <span class="inline-block border-b-8 border-orange-400 pb-2">できるところから、一歩ずつ。</span>
+                </h2>
+                <p class="text-sm md:text-xl text-slate-500 font-bold break-keep leading-relaxed text-center mt-6">リスクを背負って独立する前に、足元からキャリアを変える。</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
@@ -207,9 +217,9 @@
                 <div class="p-10 bg-orange-100 rounded-[2.5rem] border border-orange-200 relative scale-105 shadow-xl z-10 text-left">
                     <div class="bg-orange-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-black mb-6 shadow-md text-left">02</div>
                     <h3 class="text-xl font-bold text-sky-900 mb-4 font-black break-keep text-orange-600 text-left">本質的な価値を試す</h3>
-                    <p class="text-slate-800 font-bold leading-relaxed text-base md:text-lg break-keep leading-relaxed sm:whitespace-pre-wrap text-left text-justify">
+                    <p class="text-slate-800 font-bold leading-relaxed text-base md:text-lg break-keep leading-relaxed text-left text-justify">
                         身近な友人や知人に「自費の価値」を体験してもらう。<br />
-                        <span class="text-orange-600 block mt-2 underline decoration-orange-300 decoration-4 italic">
+                        <span class="text-orange-600 block mt-2 underline decoration-orange-300 decoration-4 italic prevent-orphan">
                             「自分ができる範囲」で、<br />
                             喜んでもらえる実感を持つ。
                         </span>
@@ -235,19 +245,19 @@
     </section>
 
     <!-- 7. セミナー内容まとめ -->
-    <section class="py-20 px-6 bg-slate-100">
+    <section class="py-20 section-padding bg-slate-100">
         <div class="max-w-4xl mx-auto bg-white p-8 md:p-16 rounded-[3rem] shadow-2xl border border-slate-200 text-center">
             <h2 class="text-2xl md:text-4xl font-black text-sky-900 mb-10 text-center underline decoration-orange-400 decoration-8 underline-offset-8 break-keep text-center">
                 セミナー内容の全貌
             </h2>
             <div id="curriculum-list" class="space-y-6">
-                <!-- 項目はJSで表示 -->
+                <!-- JSで生成 -->
             </div>
         </div>
     </section>
 
     <!-- 8. CTA セクション -->
-    <section id="register" class="py-24 px-6 bg-sky-600 text-white relative text-center overflow-hidden">
+    <section id="register" class="py-24 section-padding bg-sky-600 text-white relative text-center overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-sky-500 via-sky-600 to-sky-700 opacity-95"></div>
         <div class="max-w-xl mx-auto relative z-10 space-y-12">
             <div class="space-y-4">
@@ -260,10 +270,10 @@
             <div class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl text-slate-800 border-4 border-orange-400">
                 <div class="mb-8 p-6 bg-orange-50 rounded-3xl border border-orange-200 text-center">
                     <p class="text-orange-600 font-black text-xs md:text-sm mb-2 tracking-widest uppercase text-center font-urbanist">Special Invitation</p>
-                    <p class="text-slate-900 font-black text-2xl md:text-4xl italic break-keep leading-none text-center font-urbanist">4月24日(金) 23:59 締切</p>
+                    <p class="text-slate-900 font-black text-2xl md:text-4xl italic break-keep leading-none text-center">4月24日(金) 23:59 締切</p>
                 </div>
 
-                <a href="https://my82p.com/p/r/w2nttHCF" target="_blank" class="block w-full bg-orange-500 hover:bg-orange-400 text-white font-black py-6 rounded-3xl text-lg md:text-2xl shadow-xl transition transform hover:scale-[1.03] active:scale-95 text-center animate-pulse text-center">
+                <a href="https://my82p.com/p/r/w2nttHCF" target="_blank" class="block w-full bg-orange-500 hover:bg-orange-400 text-white font-black py-5 md:py-6 rounded-3xl text-lg md:text-2xl shadow-xl transition transform hover:scale-[1.03] active:scale-95 text-center animate-pulse">
                     セミナーに無料で参加する
                 </a>
                 
@@ -276,15 +286,20 @@
     </header>
 
     <!-- 9. フッター -->
-    <footer class="py-20 px-6 bg-sky-950 text-white text-center">
+    <footer class="py-20 section-padding bg-sky-950 text-white text-center">
         <div class="max-w-4xl mx-auto flex flex-col items-center">
             <p class="text-orange-400 font-black text-2xl mb-4 tracking-[0.2em] uppercase text-center">整体院 晴々</p>
-            <div class="w-16 h-0.5 bg-orange-500 mb-8 opacity-50"></div>
-            <div class="mb-8 space-y-2 text-center">
-                <p class="text-sky-200 font-bold text-[10px] md:text-sm uppercase tracking-widest italic opacity-75 text-center">院長 / 理学療法士 / 認知科学コーチ</p>
-                <p class="text-4xl md:text-6xl font-black tracking-tighter text-center">星野 健太</p>
+            <div class="w-16 h-0.5 bg-orange-400 mb-10 opacity-70"></div>
+            
+            <div class="mb-10 space-y-3 text-center">
+                <p class="text-sky-100 font-bold text-base md:text-lg tracking-widest italic uppercase">院長 / 理学療法士 / 認知科学コーチ</p>
+                <p class="text-5xl md:text-7xl font-black text-white tracking-tighter drop-shadow-lg">星野 健太</p>
             </div>
-            <p class="text-sky-800 text-[10px] tracking-widest uppercase font-bold opacity-50 text-center">© 2026 KENTA HOSHINO. ALL RIGHTS RESERVED.</p>
+            
+            <div class="w-full max-w-xs h-px bg-white/10 mb-8"></div>
+            <p class="text-sky-700 text-[10px] tracking-[0.4em] uppercase font-bold opacity-80 text-center leading-loose">
+                © 2026 KENTA HOSHINO. ALL RIGHTS RESERVED.
+            </p>
         </div>
     </footer>
 
@@ -310,7 +325,7 @@
         // カリキュラムリストの生成
         const curriculum = [
             "戻りのない身体を作る『重心』と物理法則の完全理解",
-            "<span class='inline-block'>『検査 ＞ 治療』</span>を具現化する、1ミリの狂いもない評価術",
+            "『<span class='prevent-orphan'>検査 ＞ 治療</span>』を具現化する、1ミリの狂いもない評価術",
             "PT1年目で手取り15万だった僕が激変した『決断』の裏側",
             "病院勤務を続けながら、リスクなく価値を試す一歩の踏み出し方",
             "「一人の独立」と「成功者の仕組み」の決定的な違い",
@@ -320,7 +335,7 @@
         const listContainer = document.getElementById('curriculum-list');
         curriculum.forEach(text => {
             const div = document.createElement('div');
-            div.className = "flex items-start text-base md:text-lg font-bold text-slate-700 leading-snug text-left";
+            div.className = "flex items-start text-base md:text-lg font-bold text-slate-700 leading-snug text-left mb-4";
             div.innerHTML = `<i data-lucide="check-circle-2" class="text-sky-500 mr-3 shrink-0 mt-1 w-5 h-5 text-left"></i><span class="text-left break-keep text-justify">${text}</span>`;
             listContainer.appendChild(div);
         });
